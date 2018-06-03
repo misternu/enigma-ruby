@@ -1,7 +1,7 @@
 # http://users.telenet.be/d.rijmenants/en/enigmatech.htm
 # https://en.wikipedia.org/wiki/Enigma_rotor_details
 
-LETTERS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.freeze
+ALPHABET = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.freeze
 
 ROTORS = {
   'I' => 'EKMFLGDQVZNTOWYHXUSPAIBRCJ',
@@ -14,6 +14,12 @@ ROTORS = {
   'VIII' => 'FKQHTLXOCBJSPDZRAMEWNIUYGV',
   'Beta' => 'LEYJVCNIXWPBQMDRTAKZGFUHOS',
   'Gamma' => 'FSOKANUERHMBTIYCWLQPZXVGJD'
+}.freeze
+
+NOTCHES = {
+  'I' => 'Q',
+  'II' => 'E',
+  'III' => 'V'
 }.freeze
 
 REFLECTORS = {

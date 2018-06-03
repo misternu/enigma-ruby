@@ -1,14 +1,13 @@
 require_relative '../enigma'
 
 describe Enigma do
-  describe '#reflect' do
-    it 'reflects the letter using the given reflector' do
-      letters = ('A'..'Z').to_a.join
-      reflector_b = 'YRUHQSLDPXNGOKMIEBFZCWVJAT'
-      (0..25).each do |i|
-        expect(Enigma.reflect('B', letters[i])).to eq reflector_b[i]
-        expect(Enigma.reflect('B', reflector_b[i])).to eq letters[i]
-      end
+  'Initial setting: I-II-III: MCK, Letter E encodes to Q.
+  Sample Message: QMJIDO MZWZJFJR
+  Output: ENIGMA REVEALED'
+  describe 'example' do
+    it 'decodes the example initial setting' do
+      enigma = Enigma.new(settings: ['M', 'C', 'K'])
+      expect(enigma.run('E')).to eq 'Q'
     end
   end
 end
