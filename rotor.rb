@@ -14,7 +14,11 @@ class Rotor
   end
 
   def notch
-    @notch == ALPHABET[@position]
+    @notch == position_letter
+  end
+
+  def position_letter
+    ALPHABET[@position]
   end
 
   def right_to_left(input)

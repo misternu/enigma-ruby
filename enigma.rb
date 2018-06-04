@@ -14,17 +14,31 @@ class Enigma
 
   def run(input)
     output = ''
-    @rotor3.rotate
-    input.split.each do |letter|
-      value = @rotor3.right_to_left(letter)
-      value = @rotor2.right_to_left(value)
-      value = @rotor1.right_to_left(value)
-      value = @reflector.reflect(value)
-      value = @rotor1.left_to_right(value)
-      value = @rotor2.left_to_right(value)
-      value = @rotor3.left_to_right(value)
-      output += value
+    letters = input.scan(/./)
+    letters.each do |letter|
+      if letter != ' '
+        rotation
+        output += circuit(letter)
+      else
+        output += ' '
+      end
     end
     output
+  end
+
+  def circuit(letter)
+    value = @rotor3.right_to_left(letter)
+    value = @rotor2.right_to_left(value)
+    value = @rotor1.right_to_left(value)
+    value = @reflector.reflect(value)
+    value = @rotor1.left_to_right(value)
+    value = @rotor2.left_to_right(value)
+    @rotor3.left_to_right(value)
+  end
+
+  def rotation
+    @rotor1.rotate if @rotor2.notch
+    @rotor2.rotate if @rotor2.notch || @rotor3.notch
+    @rotor3.rotate
   end
 end
