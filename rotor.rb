@@ -22,11 +22,22 @@ class Rotor
   end
 
   def right_to_left(input)
-    ALPHABET[(ALPHABET.index(@scramble[(ALPHABET.index(input) + @position) % 26]) - @position) % 26]
-    # @scramble[(ALPHABET.index(input) + @position) % 26]
+    input_index = shift(ALPHABET.index(input))
+    output_index = ALPHABET.index(@scramble[input_index])
+    ALPHABET[unshift(output_index)]
   end
 
   def left_to_right(input)
-    ALPHABET[(@scramble.index(ALPHABET[(ALPHABET.index(input) + @position) % 26]) - @position) % 26]
+    input_index = shift(ALPHABET.index(input))
+    output_index = @scramble.index(ALPHABET[input_index])
+    ALPHABET[unshift(output_index)]
+  end
+
+  def shift(index)
+    (index + @position) % 26
+  end
+
+  def unshift(index)
+    (index - @position) % 26
   end
 end

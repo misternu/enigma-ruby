@@ -13,17 +13,14 @@ class Enigma
   end
 
   def run(input)
-    output = ''
-    letters = input.scan(/./)
-    letters.each do |letter|
-      if letter != ' '
-        rotation
-        output += circuit(letter)
+    input.scan(/./).map do |letter|
+      if letter == ' '
+        ' '
       else
-        output += ' '
+        rotation
+        circuit(letter)
       end
-    end
-    output
+    end .join
   end
 
   def circuit(letter)
