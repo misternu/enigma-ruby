@@ -24,12 +24,8 @@ describe Rotor do
       rotor = Rotor.new('III', ALPHABET.index('K'))
       rotor.rotate
       expect(rotor.right_to_left('E')).to eq 'T'
-    end
-    it 'matches the example details' do
       rotor = Rotor.new('II', ALPHABET.index('C'))
       expect(rotor.right_to_left('T')).to eq 'W'
-    end
-    it 'matches the example details' do
       rotor = Rotor.new('I', ALPHABET.index('M'))
       expect(rotor.right_to_left('W')).to eq 'J'
     end
@@ -38,12 +34,8 @@ describe Rotor do
     it 'matches the example details' do
       rotor = Rotor.new('I', ALPHABET.index('M'))
       expect(rotor.left_to_right('X')).to eq 'N'
-    end
-    it 'matches the example details' do
       rotor = Rotor.new('II', ALPHABET.index('C'))
       expect(rotor.left_to_right('N')).to eq 'S'
-    end
-    it 'matches the example details' do
       rotor = Rotor.new('III', ALPHABET.index('K'))
       rotor.rotate
       expect(rotor.left_to_right('S')).to eq 'Q'
