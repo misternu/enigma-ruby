@@ -5,7 +5,7 @@ require_relative 'rotor'
 # Class for simulating enigma machines
 class Enigma
   def initialize(options = {})
-    @reflector = Reflector.new(options.fetch(:reflector, 'B'))
+    @reflector = Reflector.new(options)
     rotor_names = options.fetch(:rotors, ['I', 'II', 'III'])
     rotor_settings = options.fetch(:settings, ['A', 'A', 'A'])
     @rotor1, @rotor2, @rotor3 = (0..2).map do |i|
