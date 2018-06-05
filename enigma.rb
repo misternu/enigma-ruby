@@ -1,5 +1,6 @@
 require_relative 'constants'
 require_relative 'reflector'
+require_relative 'rotor'
 
 # Class for simulating enigma machines
 class Enigma
