@@ -8,6 +8,8 @@ class Rotor
     @wires = Wires.new(@scramble)
     @notch = NOTCHES[options.fetch(:rotor, 'I')]
     @position = options.fetch(:position, 0)
+    @right = options.fetch(:right, nil)
+    @left = options.fetch(:left, nil)
   end
 
   def rotate
@@ -32,6 +34,16 @@ class Rotor
     input_index = shift(ALPHABET.index(input))
     output_index = @scramble.index(ALPHABET[input_index])
     ALPHABET[unshift(output_index)]
+  end
+
+  def right(index)
+    output = unshift(@wires.right[shift(index)])
+    @left.right(output)
+  end
+
+  def left(index)
+    output = unshift(@wires.left[shift(index)])
+    @right.left(output)
   end
 
   def shift(index)
