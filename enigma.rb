@@ -10,7 +10,7 @@ class Enigma
       options.fetch(:settings, ['A', 'A', 'A']).map { |s| ALPHABET.index(s) }
     )
     @reflector = Reflector.new(options)
-    # connect_rotors
+    connect_rotors
   end
 
   def run(input)
@@ -19,21 +19,9 @@ class Enigma
         ' '
       else
         rotation
-        circuit(letter)
+        ALPHABET[@rotor3.right(ALPHABET.index(letter))]
       end
     end .join
-  end
-
-  def circuit(letter)
-    value = @rotor3.right_to_left(letter)
-    value = @rotor2.right_to_left(value)
-    value = @rotor1.right_to_left(value)
-    index = ALPHABET.index(value)
-    index = @reflector.reflect(index)
-    value = ALPHABET[index]
-    value = @rotor1.left_to_right(value)
-    value = @rotor2.left_to_right(value)
-    @rotor3.left_to_right(value)
   end
 
   def rotation

@@ -21,29 +21,6 @@ describe Rotor do
     end
   end
 
-  describe '#right_to_left' do
-    it 'matches the example details' do
-      rotor = Rotor.new(rotor: 'III', position: ALPHABET.index('K'))
-      rotor.rotate
-      expect(rotor.right_to_left('E')).to eq 'T'
-      rotor = Rotor.new(rotor: 'II', position: ALPHABET.index('C'))
-      expect(rotor.right_to_left('T')).to eq 'W'
-      rotor = Rotor.new(rotor: 'I', position: ALPHABET.index('M'))
-      expect(rotor.right_to_left('W')).to eq 'J'
-    end
-  end
-  describe '#left_to_right' do
-    it 'matches the example details' do
-      rotor = Rotor.new(rotor: 'I', position: ALPHABET.index('M'))
-      expect(rotor.left_to_right('X')).to eq 'N'
-      rotor = Rotor.new(rotor: 'II', position: ALPHABET.index('C'))
-      expect(rotor.left_to_right('N')).to eq 'S'
-      rotor = Rotor.new(rotor: 'III', position: ALPHABET.index('K'))
-      rotor.rotate
-      expect(rotor.left_to_right('S')).to eq 'Q'
-    end
-  end
-
   describe '#right' do
     it 'finds the output and passes it to the left' do
       left = double('left')

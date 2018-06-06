@@ -14,27 +14,11 @@ class Rotor
   end
 
   def rotate
-    @position = (@position + 1) % 26
+    @position = shift(1)
   end
 
   def notch
-    @notch == position_letter
-  end
-
-  def position_letter
-    ALPHABET[@position]
-  end
-
-  def right_to_left(input)
-    input_index = shift(ALPHABET.index(input))
-    output_index = ALPHABET.index(@scramble[input_index])
-    ALPHABET[unshift(output_index)]
-  end
-
-  def left_to_right(input)
-    input_index = shift(ALPHABET.index(input))
-    output_index = @scramble.index(ALPHABET[input_index])
-    ALPHABET[unshift(output_index)]
+    @notch == ALPHABET[@position]
   end
 
   def right(index)
