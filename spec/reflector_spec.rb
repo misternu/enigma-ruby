@@ -1,6 +1,6 @@
 require_relative '../reflector'
 
-LETTERS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.freeze
+ALPHABET ||= 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.freeze
 REFLECTOR_B = 'YRUHQSLDPXNGOKMIEBFZCWVJAT'.freeze
 
 describe Reflector do
@@ -8,8 +8,9 @@ describe Reflector do
     it 'reflects the letter using the given reflector' do
       reflector = Reflector.new(reflector: 'B')
       (0..25).each do |i|
-        expect(reflector.reflect(LETTERS[i])).to eq REFLECTOR_B[i]
-        expect(reflector.reflect(REFLECTOR_B[i])).to eq LETTERS[i]
+        output = REFLECTOR_B.index(ALPHABET[i])
+        expect(reflector.reflect(i)).to eq output
+        expect(reflector.reflect(output)).to eq i
       end
     end
   end

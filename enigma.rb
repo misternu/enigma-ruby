@@ -28,7 +28,9 @@ class Enigma
     value = @rotor3.right_to_left(letter)
     value = @rotor2.right_to_left(value)
     value = @rotor1.right_to_left(value)
-    value = @reflector.reflect(value)
+    index = ALPHABET.index(value)
+    index = @reflector.reflect(index)
+    value = ALPHABET[index]
     value = @rotor1.left_to_right(value)
     value = @rotor2.left_to_right(value)
     @rotor3.left_to_right(value)
