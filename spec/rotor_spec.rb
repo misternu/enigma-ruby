@@ -1,6 +1,6 @@
 require_relative '../rotor'
 
-ROTOR_I = ROTORS['I']
+ROTOR_I ||= ROTORS['I']
 
 describe Rotor do
   describe '#initialize' do

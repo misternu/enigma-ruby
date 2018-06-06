@@ -5,15 +5,12 @@ require_relative 'rotor'
 # Class for simulating enigma machines
 class Enigma
   def initialize(options = {})
+    setup_rotors(
+      options.fetch(:rotors, ['I', 'II', 'III']),
+      options.fetch(:settings, ['A', 'A', 'A']).map { |s| ALPHABET.index(s) }
+    )
     @reflector = Reflector.new(options)
-    rotor_names = options.fetch(:rotors, ['I', 'II', 'III'])
-    rotor_settings = options.fetch(:settings, ['A', 'A', 'A'])
-    @rotor1, @rotor2, @rotor3 = (0..2).map do |i|
-      Rotor.new(
-        rotor: rotor_names[i],
-        position: ALPHABET.index(rotor_settings[i])
-      )
-    end
+    # connect_rotors
   end
 
   def run(input)
@@ -43,5 +40,22 @@ class Enigma
     @rotor1.rotate if @rotor2.notch
     @rotor2.rotate if @rotor2.notch || @rotor3.notch
     @rotor3.rotate
+  end
+
+  private
+
+  def setup_rotors(rotor_names, rotor_settings)
+    @rotor1, @rotor2, @rotor3 = rotor_names.zip(rotor_settings).map do |r, p|
+      Rotor.new(rotor: r, position: p)
+    end
+  end
+
+  def connect_rotors
+    @reflector.right_contact = @rotor1
+    @rotor1.left_contact = @reflector
+    @rotor1.right_contact = @rotor2
+    @rotor2.left_contact = @rotor1
+    @rotor2.right_contact = @rotor3
+    @rotor3.left_contact = @rotor2
   end
 end

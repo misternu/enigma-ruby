@@ -2,7 +2,7 @@ require_relative '../wires'
 
 ALPHABET ||= 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.freeze
 REFLECTOR_B ||= 'YRUHQSLDPXNGOKMIEBFZCWVJAT'.freeze
-ROTOR_I = 'EKMFLGDQVZNTOWYHXUSPAIBRCJ'.freeze
+ROTOR_I ||= 'EKMFLGDQVZNTOWYHXUSPAIBRCJ'.freeze
 
 describe Wires do
   it 'represents the wire connections in a reflector' do

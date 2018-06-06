@@ -3,13 +3,14 @@ require_relative 'constants'
 # Class representing the rotor component of an enigma machine
 class Rotor
   attr_reader :position
+  attr_accessor :left_contact, :right_contact
   def initialize(options = {})
     @scramble = ROTORS[options.fetch(:rotor, 'I')]
     @wires = Wires.new(@scramble)
     @notch = NOTCHES[options.fetch(:rotor, 'I')]
     @position = options.fetch(:position, 0)
-    @right = options.fetch(:right, nil)
-    @left = options.fetch(:left, nil)
+    @left_contact = options.fetch(:left, nil)
+    @right_contact = options.fetch(:right, nil)
   end
 
   def rotate
@@ -38,12 +39,13 @@ class Rotor
 
   def right(index)
     output = unshift(@wires.right[shift(index)])
-    @left.right(output)
+    @left_contact.right(output)
   end
 
   def left(index)
     output = unshift(@wires.left[shift(index)])
-    @right.left(output)
+    return output unless @right_contact
+    @right_contact.left(output)
   end
 
   def shift(index)
