@@ -9,7 +9,10 @@ class Enigma
     rotor_names = options.fetch(:rotors, ['I', 'II', 'III'])
     rotor_settings = options.fetch(:settings, ['A', 'A', 'A'])
     @rotor1, @rotor2, @rotor3 = (0..2).map do |i|
-      Rotor.new(rotor_names[i], ALPHABET.index(rotor_settings[i]))
+      Rotor.new(
+        rotor: rotor_names[i],
+        position: ALPHABET.index(rotor_settings[i])
+      )
     end
   end
 
