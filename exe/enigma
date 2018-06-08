@@ -37,6 +37,10 @@ optparse = OptionParser.new do |opts|
 end
 
 optparse.parse!
+unless options[:message]
+  puts optparse.help
+  exit
+end
 
 machine = Enigma::Machine.new(options)
 puts machine.run(input_text)

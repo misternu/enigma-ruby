@@ -3,10 +3,10 @@
 A simple enigma machine simulator written in ruby. Example usage:
 
 ```
-# ruby run.rb -m "HELLO WORLD"
+# bundle exec enigma -m "HELLO WORLD"
 ILBDA AMTAZ
 
-# ruby run.rb -m "ILBDA AMTAZ"
+# bundle exec enigma -m "ILBDA AMTAZ"
 HELLO WORLD
 ```
 
