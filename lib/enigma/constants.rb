@@ -1,0 +1,32 @@
+# http://users.telenet.be/d.rijmenants/en/enigmatech.htm
+# https://en.wikipedia.org/wiki/Enigma_rotor_details
+module Enigma
+  ALPHABET = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.freeze
+
+  ROTORS = {
+    'I' => 'EKMFLGDQVZNTOWYHXUSPAIBRCJ',
+    'II' => 'AJDKSIRUXBLHWTMCQGZNPYFVOE',
+    'III' => 'BDFHJLCPRTXVZNYEIWGAKMUSQO',
+    'IV' => 'ESOVPZJAYQUIRHXLNFTGKDCMWB',
+    'V' => 'VZBRGITYUPSDNHLXAWMJQOFECK',
+    'VI' => 'JPGVOUMFYQBENHZRDKASXLICTW',
+    'VII' => 'NZJHGRCXMYSWBOUFAIVLPEKQDT',
+    'VIII' => 'FKQHTLXOCBJSPDZRAMEWNIUYGV',
+    'Beta' => 'LEYJVCNIXWPBQMDRTAKZGFUHOS',
+    'Gamma' => 'FSOKANUERHMBTIYCWLQPZXVGJD'
+  }.freeze
+
+  NOTCHES = {
+    'I' => 'Q',
+    'II' => 'E',
+    'III' => 'V'
+  }.freeze
+
+  REFLECTORS = {
+    'A' => 'EJMZALYXVBWFCRQUONTSPIKHGD',
+    'B' => 'YRUHQSLDPXNGOKMIEBFZCWVJAT',
+    'C' => 'FVPJIAOYEDRZXWGCTKUQSBNMHL',
+    'B Thin' => 'ENKQAUYWJICOPBLMDXZVFTHRGS',
+    'C Thin' => 'RDOBJNTKVEHMLFCWZAXGYIPSUQ'
+  }.freeze
+end

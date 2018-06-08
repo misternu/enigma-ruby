@@ -1,12 +1,10 @@
-require_relative '../wires'
-
 ALPHABET ||= 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.freeze
 REFLECTOR_B ||= 'YRUHQSLDPXNGOKMIEBFZCWVJAT'.freeze
 ROTOR_I ||= 'EKMFLGDQVZNTOWYHXUSPAIBRCJ'.freeze
 
-describe Wires do
+describe Enigma::Wires do
   it 'represents the wire connections in a reflector' do
-    wires = Wires.new(REFLECTOR_B)
+    wires = Enigma::Wires.new(REFLECTOR_B)
     (0..25).each do |i|
       output = ALPHABET.index(REFLECTOR_B[i])
       expect(wires.right[i]).to eq output
@@ -14,7 +12,7 @@ describe Wires do
   end
 
   it 'represents the wire connections in a rotor' do
-    wires = Wires.new(ROTOR_I)
+    wires = Enigma::Wires.new(ROTOR_I)
     (0..25).each do |i|
       output = ALPHABET.index(ROTOR_I[i])
       expect(wires.right[i]).to eq output
